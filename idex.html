@@ -35,9 +35,10 @@
     var brickOffsetLeft = 30;
     var score = 0;
     var lives = 3;
+    var totalScore = 0;
 
  var bricks = [];
- for(var c=0; c<brickColumnCount; c++) {
+ for(var c=0; c<brickColumnCount; c++) { // checks each brick and resets its status to 1.
     bricks[c] = [];
     for(var r=0; r<brickRowCount; r++) {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
@@ -83,10 +84,23 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
+                    totalScore++;
                     if(score == brickRowCount*brickColumnCount) {
-                        alert("YOU WIN, CONGRATS");
-                        document.location.reload();
-                        clearInterval(interval)
+                    //    alert("YOU WIN, CONGRATS");
+                    //    document.location.reload();
+                    //    clearInterval(interval)
+                        for(var c=0; c<brickColumnCount; c++) { // checks each brick and resets its status to 1.
+                            bricks[c] = [];
+                            for(var r=0; r<brickRowCount; r++) {
+                                bricks[c][r] = { x: 0, y: 0, status: 1 };
+                                
+                             }
+                         }
+                         dx = dx + 0.1;
+                         dy = dy + 0.1;
+                         drawBricks();
+                         score = 0;
+                         
                     }
                 }
             }
@@ -97,7 +111,7 @@ function collisionDetection() {
 function drawScore() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: "+score, 8, 20);
+    ctx.fillText("totalScore: "+totalScore, 8, 20);
 }
 
 function drawLives() {
