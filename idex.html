@@ -5,7 +5,8 @@
     <title>Gamedev Canvas Workshop</title>
     <style>
       * { padding: 0; margin: 0; }
-      canvas { background: #eee; display: block; margin: 0 auto; }
+      canvas { background:#eee;; display: block; margin: 0 auto; }
+      
     </style>
 </head>
 <body>
@@ -36,6 +37,9 @@
     var score = 0;
     var lives = 3;
     var totalScore = 0;
+    var level = 1;
+
+
 
  var bricks = [];
  for(var c=0; c<brickColumnCount; c++) { // checks each brick and resets its status to 1.
@@ -84,7 +88,8 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
-                    totalScore++;
+                    totalScore++
+                    level++
                     if(score == brickRowCount*brickColumnCount) {
                     //    alert("YOU WIN, CONGRATS");
                     //    document.location.reload();
@@ -96,11 +101,10 @@ function collisionDetection() {
                                 
                              }
                          }
-                         dx = dx + 0.1;
-                         dy = dy + 0.1;
+                         dx = dx + 0.5;
+                         dy = dy + 0.5;
                          drawBricks();
-                         score = 0;
-                         
+                         score = 0;                        
                     }
                 }
             }
@@ -111,14 +115,21 @@ function collisionDetection() {
 function drawScore() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("totalScore: "+totalScore, 8, 20);
+    ctx.fillText("Overall score: "+totalScore, 8, 20);
 }
 
 function drawLives() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+    ctx.fillText("Lives: "+lives, canvas.width -65, 20);
 }
+
+function drawLevel() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Level: " , canvas.width -300, 20);
+}  
+
 
 function drawBall() {
     ctx.beginPath();
@@ -166,6 +177,7 @@ function draw() {
     collisionDetection();
     drawScore();
     drawLives();
+    drawLevel();
 
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;

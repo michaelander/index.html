@@ -1,0 +1,2 @@
+Add levels, increase the level status within then game.
+Add a "shop" option, allows a user to buy different shapes with different strengthes. E.G x2 multiplier when hitting a shape.
