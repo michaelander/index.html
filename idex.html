@@ -35,10 +35,10 @@
     var brickOffsetTop = 30;
     var brickOffsetLeft = 30;
     var score = 0;
-    var lives = 3;
+    var lives = 10;
     var totalScore = 0;
-    var level = 1;
-
+    var level = 0;
+    
 
 
  var bricks = [];
@@ -50,9 +50,9 @@
 }
 
 
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("keydown", keyDownHandler, false); //Listens to when keydown is pressed.
+document.addEventListener("keyup", keyUpHandler, false);//Listens to when keyup is pressed.
+document.addEventListener("mousemove", mouseMoveHandler, false);//Listens to when the mouse is moved.
 
 function mouseMoveHandler(e) {
     var relativeX = e.clientX - canvas.offsetLeft;
@@ -88,12 +88,11 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
-                    totalScore++
-                    level++
+                    totalScore++;
+                    if (level == 3) alert("you win")
                     if(score == brickRowCount*brickColumnCount) {
-                    //    alert("YOU WIN, CONGRATS");
-                    //    document.location.reload();
-                    //    clearInterval(interval)
+                    //document.location.reload();
+                    //clearInterval(interval)
                         for(var c=0; c<brickColumnCount; c++) { // checks each brick and resets its status to 1.
                             bricks[c] = [];
                             for(var r=0; r<brickRowCount; r++) {
@@ -101,10 +100,11 @@ function collisionDetection() {
                                 
                              }
                          }
-                         dx = dx + 0.5;
-                         dy = dy + 0.5;
-                         drawBricks();
-                         score = 0;                        
+                         dx = dx + 0.5; //increases the speed of x axis if the round is won.
+                         dy = dy + 0.5; //increases the speed of the y axis if the round is won.
+                         drawBricks(); 
+                         score = 0;   
+                         level++;                   
                     }
                 }
             }
@@ -127,7 +127,7 @@ function drawLives() {
 function drawLevel() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Level: " , canvas.width -300, 20);
+    ctx.fillText("Level: "+level, canvas.width -300, 20);
 }  
 
 
