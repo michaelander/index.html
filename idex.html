@@ -38,7 +38,7 @@
     var lives = 10;
     var totalScore = 0;
     var level = 0;
-    
+    var isPaused = false;
 
 
  var bricks = [];
@@ -53,6 +53,12 @@
 document.addEventListener("keydown", keyDownHandler, false); //Listens to when keydown is pressed.
 document.addEventListener("keyup", keyUpHandler, false);//Listens to when keyup is pressed.
 document.addEventListener("mousemove", mouseMoveHandler, false);//Listens to when the mouse is moved.
+
+
+
+
+
+
 
 function mouseMoveHandler(e) {
     var relativeX = e.clientX - canvas.offsetLeft;
