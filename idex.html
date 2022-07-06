@@ -14,7 +14,7 @@
 <body>
    
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="800" height="500"></canvas>
 
 <script>
     var canvas = document.getElementById("myCanvas");
@@ -29,8 +29,8 @@
     var paddleX = (canvas.width-paddleWidth) / 2;   
     var rightPressed = false;
     var leftPressed = false;
-    var brickRowCount = 3;
-    var brickColumnCount = 5;
+    var brickRowCount = 5;
+    var brickColumnCount = 9;
     var brickWidth = 75;
     var brickHeight = 20;
     var brickPadding = 10;
@@ -108,12 +108,12 @@ function collisionDetection() {
                     if(level === 8) {paddleWidth =18;}
                     if(level === 9) {paddleWidth =16;}
                     if(level === 10) {paddleWidth =14;}
-                    if(level ===1){brickColumnCount =5;}
-                    if(level ===2){brickColumnCount =4;} 
-                    if(level ===3){brickColumnCount =3;}
-                    if(level ===4){brickColumnCount =2;}
-                    if(level ===5){brickColumnCount =1;}
-                    if(level ===6){brickColumnCount =1;}
+                    if(level ===1){brickColumnCount =9;}
+                    if(level ===2){brickColumnCount =7;} 
+                    if(level ===3){brickColumnCount =5;}
+                    if(level ===4){brickColumnCount =3;}
+                    if(level ===5){brickColumnCount =2;}
+                    if(level ===6){brickColumnCount =5;}
                     if(score == brickRowCount*brickColumnCount) {
                     //document.location.reload();
                     //clearInterval(interval)
