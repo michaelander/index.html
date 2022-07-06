@@ -35,10 +35,10 @@
     var brickOffsetTop = 30;
     var brickOffsetLeft = 30;
     var score = 0;
-    var lives = 10;
+    var lives = 4;
     var totalScore = 0;
-    var level = 0;
-    var isPaused = false;
+    var level = 1;
+   
 
 
  var bricks = [];
@@ -95,7 +95,16 @@ function collisionDetection() {
                     b.status = 0;
                     score++;
                     totalScore++;
-                    if (level == 3) alert("you win")
+                    if (level == 10) alert("All levels completed, retry if you wish!")
+                    if(level === 2) {paddleWidth =30;}
+                    if(level === 3) {paddleWidth =28;}
+                    if(level === 4) {paddleWidth =26;}
+                    if(level === 5) {paddleWidth =24;}
+                    if(level === 6) {paddleWidth =22;}  
+                    if(level === 7) {paddleWidth =20;} 
+                    if(level === 8) {paddleWidth =18;}
+                    if(level === 9) {paddleWidth =16;}
+                    if(level === 10) {paddleWidth =14;}
                     if(score == brickRowCount*brickColumnCount) {
                     //document.location.reload();
                     //clearInterval(interval)
@@ -107,7 +116,7 @@ function collisionDetection() {
                              }
                          }
                          dx = dx + 0.5; //increases the speed of x axis if the round is won.
-                         dy = dy + 0.5; //increases the speed of the y axis if the round is won.
+                         dy = dy + 0.5;  //increases the speed of the y axis if the round is won.
                          drawBricks(); 
                          score = 0;   
                          level++;                   
